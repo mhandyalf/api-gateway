@@ -4,11 +4,12 @@ import (
 	"errors"
 	"fmt"
 	"log"
+	"os"
 
 	"github.com/golang-jwt/jwt/v5"
 )
 
-var jwt_secret string = "this_is_jwt_secret_shhh"
+var jwt_secret string = os.Getenv("SECRET")
 
 func SignToken(email string) string {
 	token := jwt.NewWithClaims(jwt.SigningMethodHS256, jwt.MapClaims{
